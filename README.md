@@ -62,13 +62,6 @@ The original setup of this repository is by [Daniel Rich][sjthespian].
 For a full list of all authors and contributors,
 check [the contributor's page][contributors].
 
-## We have got some Home Assistant add-ons for you
-
-Want some more functionality to your Home Assistant instance?
-
-We have created multiple add-ons for Home Assistant. For a full list, check out
-our [GitHub Repository][repository].
-
 ## License
 
 MIT License
