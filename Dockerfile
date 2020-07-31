@@ -15,13 +15,23 @@ RUN apk add --no-cache \
 	build-base \
 	python3-dev \
         git \
+    # Tuya Gateway
     && git clone --depth=1 https://github.com/TradeFace/tuyagateway.git \
     && cd tuyagateway \ 
-    && pip install -r requirements.txt \
+    && pip install --no-cache-dir -r requirements.txt \
     && pip install tuyagateway \
+    # GismoCaster - install into /web
+    && cd .. \
+    && git clone --depth 1 https://github.com/TradeFace/gismocaster.git \
+    && cd gismocaster \
+    && pip install --no-cache-dir -r requirements.txt \
+    && mkdir -p /web \
+    && find web -print | cpio -pvdm / \
     && apk del .build-deps \
-    && rm -rf /usr/src/tuyagateway
+    && cd .. \
+    && rm -rf /usr/src/tuyagateway /usr/src/gismocaster
 
 COPY data/run.sh /
 
+WORKDIR /
 ENTRYPOINT [ "/run.sh" ]

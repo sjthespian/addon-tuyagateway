@@ -11,15 +11,18 @@ Follow these steps to get the add-on installed on your system:
 
 ## How to use
 
-1. No configuration is necessary if you are running MQTT on your Home Assistant server. If not, in the TuyaGateway add-on configuration, perform the following:
+1. No configuration is necessary for the Tuya Gateway if you are running MQTT on your Home Assistant server or to run GizmoCaster on its default port. If not, in the TuyaGateway add-on configuration, perform the following:
     - Add your MQTT username and password if any.
     - Update MQTT host IP address and port if you aren't running MQTT on your Home Assistant server.
+    - Optionally change the GismoCaster port.
 2. Click the **Start** button to start the add-on.
 3. Check the Log tab to insure the add-on started and is communicating to your MQTT broker.
 
+**NOTE: GismoCaster may take a while to start the first time as it has to create and populate the database**
+
 ## Configuration
 
-Optional add-on configuration if no MQTT server running on HA:
+Optional add-on configuration for Tuya Gateway if no MQTT server running on HA:
 
 ```yaml
 mqttuser: ""
@@ -27,6 +30,8 @@ mqttpass: ""
 mqtthost: 127.0.0.1
 mqttport: 1883
 ```
+
+When configuring GismoCaster, use `core-mosquitto` for the mqtt_host if you are running mosquitto as your MQTT broker on your Home Assistant server as an add-on.
 
 #### Option `mqttuser`
 

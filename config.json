@@ -1,14 +1,8 @@
 {
-  "name": "Tuya Gateway",
-  "version": "0.1",
-  "slug": "tuyagateway",
-  "description": "Listens on MQTT topic and routes requests to Tuya devices, based on a one to one topic translation.",
   "arch": ["armhf", "armv7", "aarch64", "amd64", "i386"],
-  "startup": "services",
   "boot": "auto",
-  "stage": "experimental",
-  "url": "https://github.com/sjthespian/addon-tuyagateway",
-  "services": ["mqtt:want"],
+  "description": "Listens on MQTT topic and routes requests to Tuya devices, based on a one to one topic translation.",
+  "name": "Tuya Gateway",
   "options": {
     "mqttuser": "",
     "mqttpass": "",
@@ -16,11 +10,24 @@
     "mqttport": "1883",
     "loglevel": "DEBUG"
   },
+  "ports": {
+    "8111/tcp": 8111
+  },
+  "ports_description": {
+    "8111/tcp": "Web interface for GismoCaster"
+  },
   "schema": {
     "mqttuser": "str",
     "mqttpass": "password",
     "mqtthost": "str",
     "mqttport": "port",
     "loglevel": "list(INFO|WARN|ERROR|DEBUG)"
-  }
+  },
+  "services": ["mqtt:want"],
+  "slug": "tuyagateway",
+  "stage": "experimental",
+  "startup": "services",
+  "url": "https://github.com/sjthespian/addon-tuyagateway",
+  "version": "0.2",
+  "webui": "http://[HOST]:[PORT:8111]"
 }

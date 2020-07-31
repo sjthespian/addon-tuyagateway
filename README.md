@@ -19,15 +19,15 @@
 
 [![Buy me a coffee][buymeacoffee-shield]][buymeacoffee]
 
-An addon for the [TuyaGateway][tuyagateway] application. TuyaGateway listens on
-MQTT topics and routes requests to your Tuya devices. In earlier versions the
-configuration was based on a one to one topic translation in e.g. Home-Assistant
+An addon for the [TuyaGateway][tuyagateway] application. TuyaGateway listens on MQTT topics and routes requests to your Tuya devices. In earlier versions the configuration was based on a one to one topic translation in e.g. Home-Assistant
 config-files.
+
+Also included is [GismoCaster][gismocaster], which offers a webinterface in which you can add/alter/delete devices and setup the dps properties. This configuration is written to your MQTT broker as a retain message. TuyaGateway and Home Assistant are listening for these autodiscovery topics.
+
 
 ## About
 
-For more information about the Tuya Gateway and how to use it, please see the
-[TuyaGateway wiki][tuyagateway-wiki].
+For more information about the Tuya Gateway and how to use it, please see the [TuyaGateway wiki][tuyagateway-wiki]. More information on GizmoCaster can be found on the [GismoCaster wiki][gismocaster-wiki]
 
 ## Support
 
@@ -35,6 +35,7 @@ Got questions?
 
 You have several options to get them answered:
 
+- The [documentation](DOCS.md)
 - The [Home Assistant Community Add-ons Discord chat server][discord] for add-on
   support and feature requests.
 - The [Home Assistant Discord chat server][discord-ha] for general Home
@@ -121,3 +122,5 @@ SOFTWARE.
 [repository]: https://github.com/sjthespian/repository
 [tuyagateway]: https://github.com/TradeFace/tuyagateway
 [tuyagateway-wiki]: https://github.com/TradeFace/tuyagateway/wiki
+[gismocaster]: https://github.com/TradeFace/gismocaster
+[gismocaster-wiki]: https://github.com/TradeFace/gismocaster/wiki

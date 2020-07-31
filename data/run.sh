@@ -1,5 +1,8 @@
 #!/usr/bin/env bashio
 
+# Array of started process IDs
+WAIT_PIDS=()
+
 # Build config file from options
 CONFIG_PATH=/data/options.json
 
@@ -19,6 +22,9 @@ fi
 
 LOGLEVEL="$(bashio::config 'loglevel')"
 
+# Port for GismoCaster
+GCPORT=8111
+
 bashio::log.info "Generate Tuya Gateway configuration"
 # Generate configuration file
 cat <<EOFEOF > /etc/tuyagateway.conf
@@ -37,4 +43,40 @@ port: ${MQTT_PORT}
 EOFEOF
 
 bashio::log.info "Start Tuya Gateway daemon"
-tuyagateway -ll ${LOGLEVEL}
+tuyagateway -ll ${LOGLEVEL} &
+WAIT_PIDS+=($!)
+
+# GismoCaster
+# Copy web dir into /data so the db paths work correctly
+if [ ! -d /data/web ]; then
+  mkdir /data/web
+fi
+find /web -print | cpio -pdm /data/
+cd /data
+# create database dir and populate if needed
+if [ ! -d var/db ]; then
+  bashio::log "Creating database directory"
+  mkdir -p var/db
+fi
+if [ ! -f var/db/db.sqlite3 ]; then
+  bashio::log "No GismoCaster database found, initializing..."
+  python3 web/manage.py migrate
+  python3 web/manage.py loaddata component topic template topicvalue componentvalue setting
+  python3 web/manage.py createsuperuser --username admin --password admin --email admin@admin.com
+fi
+
+bashio::log.info "Start GismoCaster daemon"
+python3 web/manage.py runserver 0.0.0.0:${GCPORT} --noreload &
+WAIT_PIDS+=($!)
+
+# Handling Closing
+function stop_tuyagateway() {
+    bashio::log.info "Shutdown Tuya Gateway system"
+    kill -15 "${WAIT_PIDS[@]}"
+
+    wait "${WAIT_PIDS[@]}"
+}
+trap "stop_mqtt" SIGTERM SIGHUP
+
+# Wait and hold Add-on running
+wait "${WAIT_PIDS[@]}"
