@@ -1,0 +1,26 @@
+{
+  "name": "Tuya Gateway",
+  "version": "0.1",
+  "slug": "tuyagateway",
+  "description": "Listens on MQTT topic and routes requests to Tuya devices, based on a one to one topic translation.",
+  "arch": ["armhf", "armv7", "aarch64", "amd64", "i386"],
+  "startup": "services",
+  "boot": "auto",
+  "stage": "experimental",
+  "url": "https://github.com/sjthespian/addon-tuyagateway",
+  "services": ["mqtt:want"],
+  "options": {
+    "mqttuser": "",
+    "mqttpass": "",
+    "mqtthost": "127.0.0.1",
+    "mqttport": "1883",
+    "loglevel": "DEBUG"
+  },
+  "schema": {
+    "mqttuser": "str",
+    "mqttpass": "password",
+    "mqtthost": "str",
+    "mqttport": "port",
+    "loglevel": "list(INFO|WARN|ERROR|DEBUG)"
+  }
+}
