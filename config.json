@@ -28,6 +28,6 @@
   "stage": "experimental",
   "startup": "services",
   "url": "https://github.com/sjthespian/addon-tuyagateway",
-  "version": "0.2",
+  "version": "0.3",
   "webui": "http://[HOST]:[PORT:8111]"
 }

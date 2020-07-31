@@ -11,6 +11,7 @@ RUN apk add --no-cache \
         python3 \
 	py3-pip \
 	musl \
+	sqlite \
     && apk add --no-cache --virtual .build-deps \
 	build-base \
 	python3-dev \

@@ -31,7 +31,7 @@ mqtthost: 127.0.0.1
 mqttport: 1883
 ```
 
-When configuring GismoCaster, use `core-mosquitto` for the mqtt_host if you are running mosquitto as your MQTT broker on your Home Assistant server as an add-on.
+GizmoCaster will automatically have the mqtt database values configured from the installed mqtt broker or the settings above if one is not running on each start. This will override the values entered through the Web UI.
 
 #### Option `mqttuser`
 

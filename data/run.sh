@@ -64,6 +64,7 @@ if [ ! -f var/db/db.sqlite3 ]; then
   python3 web/manage.py loaddata component topic template topicvalue componentvalue setting
   python3 web/manage.py createsuperuser --username admin --password admin --email admin@admin.com
 fi
+echo "UPDATE mqtt_setting SET value='${MQTT_HOST}' WHERE name='mqtt_host'; UPDATE mqtt_setting SET value='${MQTT_PORT}' WHERE name='mqtt_port'; UPDATE mqtt_setting SET value='${MQTT_USER}' WHERE name='mqtt_user'; UPDATE mqtt_setting SET value='${MQTT_PASSWORD}' WHERE name='mqtt_pass';" | sqlite3 /data/var/db/db.sqlite3
 
 bashio::log.info "Start GismoCaster daemon"
 python3 web/manage.py runserver 0.0.0.0:${GCPORT} --noreload &
