@@ -1,4 +1,4 @@
-# Home Assistant Community Add-on: Network UPS Tools
+# Home Assistant Community Add-on: TuyaGateway
 
 [![GitHub Release][releases-shield]][releases]
 ![Project Stage][project-stage-shield]
