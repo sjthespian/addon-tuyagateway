@@ -58,11 +58,13 @@ if [ ! -d var/db ]; then
   bashio::log "Creating database directory"
   mkdir -p var/db
 fi
-if [ ! -f var/db/db.sqlite3 ]; then
+if [ ! -f var/db/.initialized-v1.0 ]; then
   bashio::log "No GismoCaster database found, initializing..."
+  rm -rf var/db
   python3 web/manage.py migrate
   python3 web/manage.py loaddata component topic template topicvalue componentvalue setting
   python3 web/manage.py createsuperuser --username admin --password admin --email admin@admin.com
+  touch var/db/.initialized-v1.0
 fi
 echo "UPDATE mqtt_setting SET value='${MQTT_HOST}' WHERE name='mqtt_host'; UPDATE mqtt_setting SET value='${MQTT_PORT}' WHERE name='mqtt_port'; UPDATE mqtt_setting SET value='${MQTT_USER}' WHERE name='mqtt_user'; UPDATE mqtt_setting SET value='${MQTT_PASSWORD}' WHERE name='mqtt_pass';" | sqlite3 /data/var/db/db.sqlite3
 
