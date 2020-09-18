@@ -7,6 +7,8 @@ ARG BUILD_ARCH=amd64
 
 WORKDIR /usr/src
 
+COPY data/run.sh /
+
 RUN apk add --no-cache \
         python3 \
 	py3-pip \
@@ -30,9 +32,8 @@ RUN apk add --no-cache \
     && find web -print | cpio -pvdm / \
     && apk del .build-deps \
     && cd .. \
-    && rm -rf /usr/src/tuyagateway /usr/src/gismocaster
-
-COPY data/run.sh /
+    && rm -rf /usr/src/tuyagateway /usr/src/gismocaster \
+    && chmod 755 /run.sh
 
 WORKDIR /
 ENTRYPOINT [ "/run.sh" ]

@@ -44,6 +44,10 @@ You have several options to get them answered:
 
 You could also [open an issue here][issue] GitHub.
 
+## Upgrading
+
+The addon will pull the latest version of the TuyaGateway and GizmoCaster software whenever it is installed. To upgrade to the latest version simply rebuild the add-on from the Home Assistant Supervisor.
+
 ## Contributing
 
 This is an active open-source project. We are always open to people who want to

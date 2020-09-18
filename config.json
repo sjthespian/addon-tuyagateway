@@ -3,6 +3,9 @@
   "boot": "auto",
   "description": "Listens on MQTT topic and routes requests to Tuya devices, based on a one to one topic translation.",
   "name": "Tuya Gateway",
+  "ingress": true,
+  "ingress_port": 8111,
+  "panel_icon": "mdi:access-point-network",
   "options": {
     "mqttuser": "",
     "mqttpass": "",
@@ -28,6 +31,6 @@
   "stage": "experimental",
   "startup": "services",
   "url": "https://github.com/sjthespian/addon-tuyagateway",
-  "version": "0.3",
+  "version": "0.4",
   "webui": "http://[HOST]:[PORT:8111]"
 }

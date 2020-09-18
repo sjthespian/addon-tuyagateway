@@ -21,6 +21,7 @@ if [ -z "$MQTT_HOST" -o -z "$MQTT_PORT" ]; then
 fi
 
 LOGLEVEL="$(bashio::config 'loglevel')"
+bashio::log.info "Log level set to $LOGLEVEL"
 
 # Port for GismoCaster
 GCPORT=8111
