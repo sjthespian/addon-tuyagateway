@@ -6,6 +6,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.6] - 2020-09-18
+### Bug fixes
+- Rollback contributed change, as it will delete the database on existing systems
+
 ## [0.5] - 2020-09-18
 ### Added
 - Patch from @3v1n0 to prevent database not being initialized if the plugin is aborted on intial startup [PR3](https://github.com/sjthespian/addon-tuyagateway/pull/3)
