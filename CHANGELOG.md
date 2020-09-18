@@ -6,6 +6,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.5] - 2020-09-18
+### Added
+- Patch from @3v1n0 to prevent database not being initialized if the plugin is aborted on intial startup [PR3](https://github.com/sjthespian/addon-tuyagateway/pull/3)
+### Bug fixes
+- Fix for permissions on docker entrypoint [#6](https://github.com/sjthespian/addon-tuyagateway/issues/6)
+- Documentation update for tuyagateway upgrade instructions [#4](https://github.com/sjthespian/addon-tuyagateway/issues/4)
+
 ## [0.4] - 2020-07-31
 ### Added
 - Ingres support
